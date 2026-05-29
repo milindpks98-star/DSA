@@ -1,7 +1,7 @@
 /**
  * Note: The returned array must be malloced, assume caller calls free().
  */
- //////milind////
+ //////milind/////
  int find(int i,int x,int *nums,int size)
 {
     for(int j=i+1;j<size;j++)
