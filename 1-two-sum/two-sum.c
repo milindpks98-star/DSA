@@ -27,7 +27,10 @@ int * twoSum(int * nums, int numsSize, int target, int * returnSize) {
     num = nums[i];
     diff = target - nums[i];
     //if (num != diff) 
-    
+    {
+      hp[i].val = nums[i];
+      hp[i].index = i;
+    }
     while (i > 0 && j < i) {
       if (diff == hp[j].val) {
         result[0] = hp[j].index;
@@ -36,10 +39,6 @@ int * twoSum(int * nums, int numsSize, int target, int * returnSize) {
         return result;
       }
       j++;
-    }
-    {
-      hp[i].val = nums[i];
-      hp[i].index = i;
     }
 
     //   j=find(i,diff,nums,numsSize);
