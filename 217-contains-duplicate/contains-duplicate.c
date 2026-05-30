@@ -1,17 +1,33 @@
-int compare(const void *a, const void *b)
-{
-    return (*(int *)a - *(int *)b);
-}
-
 bool containsDuplicate(int* nums, int numsSize)
 {
-    qsort(nums, numsSize, sizeof(int), compare);
+    int size = numsSize * 2 + 1;
 
-    for (int i = 1; i < numsSize; i++)
+    int *table = (int *)calloc(size, sizeof(int));
+    bool *used = (bool *)calloc(size, sizeof(bool));
+
+    for (int i = 0; i < numsSize; i++)
     {
-        if (nums[i] == nums[i - 1])
-            return true;
+        int key = nums[i];
+        int idx = ((key % size) + size) % size;
+
+        while (used[idx])
+        {
+            if (table[idx] == key)
+            {
+                free(table);
+                free(used);
+                return true;
+            }
+
+            idx = (idx + 1) % size;
+        }
+
+        table[idx] = key;
+        used[idx] = true;
     }
+
+    free(table);
+    free(used);
 
     return false;
 }
