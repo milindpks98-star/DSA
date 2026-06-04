@@ -3,23 +3,21 @@
  */
 int* sortedSquares(int* nums, int numsSize, int* returnSize) {
     int *result=calloc(numsSize,sizeof(int));
-    for(int i=0;i<numsSize;i++)
+    int left=0;
+    int right=numsSize-1;
+    int pos=numsSize-1;
+    while(left<=right)
     {
-        result[i]=nums[i]*nums[i];
-    }
-   
-    int j=1;
-    int temp=0;
-    for(int i=0;i<numsSize;i++)
-    {
-        for(j=i+1;j<numsSize;j++)
+        int ls=nums[left]*nums[left];
+        int rs=nums[right]*nums[right];
+        
         {
-            if(result[i]>result[j])
-            {
-                temp=result[i];
-                result[i]=result[j];
-                result[j]=temp;
-            }
+            if(ls>rs)
+            {result[pos]=ls; left++;}
+            else
+            {result[pos]=rs; right--;}
+
+            pos--;
         }
     }
 
