@@ -18,7 +18,7 @@ int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes
     }
     qsort(nums,numsSize,sizeof(int),compare);
 
-    int capacity=1000;
+    int capacity=3000;
     int **result=(int **)malloc(capacity*sizeof(int *)); 
     *returnColumnSizes=(int *)malloc(capacity*sizeof(int));
     
