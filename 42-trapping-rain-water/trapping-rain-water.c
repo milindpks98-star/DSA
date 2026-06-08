@@ -9,7 +9,7 @@ int trap(int* height, int heightSize) {
     {
         if(height[left]<height[right])
         {
-            if(height[left]>leftmax)
+            if(height[left]>=leftmax)
             {
                 leftmax=height[left];
             }
@@ -24,7 +24,7 @@ int trap(int* height, int heightSize) {
         else
         {
             
-            if(height[right]>rightmax)
+            if(height[right]>=rightmax)
             {
                 rightmax=height[right];
             }
