@@ -1,23 +1,23 @@
-int calculatedays(int *weights,int weightsSize,int k)
-{
-     int days = 1;
-    int currentLoad = 0;
+// int calculatedays(int *weights,int weightsSize,int k)
+// {
+//      int days = 1;
+//     int currentLoad = 0;
 
-    for(int i = 0; i < weightsSize; i++)
-    {
-        if(currentLoad + weights[i] > k)
-        {
-            days++;
-            currentLoad = weights[i];
-        }
-        else
-        {
-            currentLoad += weights[i];
-        }
-    }
+//     for(int i = 0; i < weightsSize; i++)
+//     {
+//         if(currentLoad + weights[i] > k)
+//         {
+//             days++;
+//             currentLoad = weights[i];
+//         }
+//         else
+//         {
+//             currentLoad += weights[i];
+//         }
+//     }
 
-    return days;
-}   
+//     return days;
+// }   
 
 int shipWithinDays(int* weights, int weightsSize, int days) {
     int left=0;
@@ -40,8 +40,23 @@ int shipWithinDays(int* weights, int weightsSize, int days) {
     
     while(left<right)
     {
+        int sum=0;int d=1;
         int mid=left+(right-left)/2;
-        int d=calculatedays(weights,weightsSize,mid);
+        // int d=calculatedays(weights,weightsSize,mid);
+        for(int i=0;i<weightsSize;i++)
+        {
+            if(sum+weights[i]>mid)
+            {
+                d++;
+                sum=weights[i];
+            }
+            else
+            {
+                sum+=weights[i];
+            }
+        }
+        
+
         if(d<=days)
         {
             
