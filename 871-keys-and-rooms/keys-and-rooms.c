@@ -1,11 +1,13 @@
-void dfs(int **rooms,int roomsSize,int *roomsColSize,int roomNo,bool *visited)
+void dfs(int **rooms,int roomsSize,int* roomsColSize,int roomNo,bool* visited)
 {
-    visited[roomNo]=true;
-    for(int i=0;i<roomsColSize[roomNo];i++)
+   visited[roomNo]=true;
+   for(int i=0;i<roomsColSize[roomNo];i++)
+   {
+    if(visited[rooms[roomNo][i]]==false)
     {
-        if(visited[rooms[roomNo][i]]==false)
         dfs(rooms,roomsSize,roomsColSize,rooms[roomNo][i],visited);
     }
+   }
     
 }
 bool canVisitAllRooms(int** rooms, int roomsSize, int* roomsColSize) {
@@ -17,6 +19,5 @@ bool canVisitAllRooms(int** rooms, int roomsSize, int* roomsColSize) {
         if(visited[i]==false)
         return false;
     }
-
     return true;
 }
