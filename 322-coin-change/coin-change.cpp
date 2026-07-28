@@ -2,27 +2,27 @@
 class Solution {
 public:
 const int INF=1e9;
-    int solve(vector<int>&coins,int amount,vector<int>&dp)
+    int solve(int index,vector<int>&coins,int amount,vector<vector<int>>&dp)
     {
+        int take=INF;
+        if(amount==0)return 0;
+        if(index==coins.size())return INF;
+        if(dp[index][amount]!=-1)return dp[index][amount];
+
+        if(coins[index]<=amount)
+        {
+           
+                 take=1+solve(index,coins,amount-coins[index],dp);
+           
+        }
+        int skip=solve(index+1,coins,amount,dp);
+        dp[index][amount]=min(take,skip);
         
-        
-        if(amount==0)
-        return 0;
-        if(amount<0)
-        return INF;
-        int ans=INF;
-        if(dp[amount]!=-1)
-        return dp[amount];
-            for(int coin:coins)
-            {  
-                     ans=min(ans,1+solve(coins,amount-coin,dp));
-            }
-        
-       return dp[amount]=ans;
+        return dp[index][amount];    
     }
     int coinChange(vector<int>& coins, int amount) {
-        vector<int> dp(amount+1,-1);
-        int ans= solve(coins,amount,dp);
+        vector<vector<int>> dp(coins.size(),vector<int>(amount+1,-1));
+        int ans= solve(0,coins,amount,dp);
         if(ans>=INF)
         return -1;
 
