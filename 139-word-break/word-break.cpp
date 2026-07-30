@@ -4,7 +4,7 @@ public:
     {
         if(index==s.size())return true;
         if(dp[index]!=-1)return dp[index];
-        for(string word:wordDict)
+        for(string &word:wordDict)
         {
             int len=word.size();
             if(index+len<=s.size() && s.substr(index,len)==word)
