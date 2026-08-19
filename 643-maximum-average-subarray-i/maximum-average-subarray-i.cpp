@@ -1,7 +1,8 @@
+//fixed sliding window template question
+
 class Solution {
 public:
     double findMaxAverage(vector<int>& nums, int k) {
-        int l=0;
         int r=0;int sum=0;int maxsum=0;
         for(int i=0;i<k;i++)
         {
